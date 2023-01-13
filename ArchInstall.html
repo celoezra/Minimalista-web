@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="black" text="green">
+    Instalando Arch Linux...<br><br>
+
+    Para deixar o teclado em Abnt2:<br>
+    loadkeys br-abnt2<br><br>
+    Para entrar no editor de disco:<br>
+    cfdisk /dev/sda<br>
+    Aqui devemos, começar a configuração e particionamento do sistema.<br>
+    577M para boot. (EFI)<br>
+    16GB para Swap (SWAP FILE)<br>
+    Tem que dividir o sistema. <br>
+    Quanto você decidir que ficar no /<br>
+    E quanto você decidir que fica no home<br>
+    Se for montar uma home separada do /, tem que criar mais um file system, você decide o tamanho.<br>
+    Formatação:<br>
+    mkfs.fat -F32 /dev/sda1 <br>
+    mkswap /dev/sda2 <br>
+    mkfs.ext4 /dev/sda3  (/ barra)<br>
+    mkfs.ext4 /dev/sda4 (home)<br>
+    Montando:<br>
+    mount /dev/sda3 /mnt (fica para o barra) (30 GB fica legal, mas eu sempre uso 100)<br>
+    mkdir /mnt/home <br>
+    mkdir /mnt/boot/efi<br>
+    mount /dev/sda1 /mnt/boot/efi<br>
+    swapon /dev/sda2<br>
+    Confira se esta tudo certo com o comando lsblk<br>
+    Pacman –Sy archlinux-keyring<br>
+    pacstrap /mnt base base-devel linux linux-firmware nano vim dhcpcd<br>
+    genfstab -U -p /mnt >> /mnt/etc/fstab<br>
+    Arch-chroot /mnt -> para entrar no sistema.<br>
+    ln -sf /usr/share/zoneinfo/America/Sao_Paulo/etc/localtime<br>
+    hwclock --systohc<br>
+    nano locale-gen<br>
+    Descomente o pt-br utf-8<br>
+    Configure o teclado:<br>
+    /etc/vconsole.conf<br>
+    KEYMAP=br-abnt2<br>
+    Defina a senha super-root<br>
+    Comando: passwd<br>
+    Insira a senha e repita quando solicitar.<br>
+
+    
+</body>
+</html>

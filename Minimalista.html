@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>MinimalistaWeb</title>
+</head>
+<body bgcolor="black" text="green">
+COMANDOS LINUX:</br></br>
+
+HARDWARE COMANDOS:
+
+Comandos df (HD)<br>         
+df = ele analisa partições fisicas e virtuais e mostra quanto tem de espaço.<br>
+df -a = inclui sistema de arquivos com 0 blocos<br>
+df -h = mostra o espaço livre/ocupado em MB, KB, GB em vez de bloco.<br>
+df -k = lista em Kbytes<br>
+df -l = somente lista sistema de arquivos locais<br>
+df -m = lista em Mbytes<br>
+df -T = lista o tipo de sistema de arquivos de cada partição. <br><br>
+
+Comandos top (Lista de processos)</br>
+top = mostra a lista de processos</br>
+top -d (num) = isso é o "num" o numero de segundos que você quer atualizar.</br>
+top -h = mostra opções do utilitario</br>
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+ 
+AJUDA COM COMANDOS NO TERMINAL</br>
+
+Man = Manual</br>
+man nome-da-ação = vai aparecer o manual dele</br>
+EXEMPLO: man apt </br>
+Pode usar --help
+EXEMPLO: ls --help</br></br>
+
+COMANDOS SE VOCÊ ESTÁ PERDIDO OU NÃO SABE ONDE ESTÁ NO TERMINAL</br>
+whoami = Quem sou eu ? vai te dizer que usuario você está logado</br>
+pwd = imprime o nome do diretório local que você está</br></br>
+
+Comandos no terminal, para deixar mais facil</br>
+!! = Faz o comando que você coloca antes complementar o de cima no terminal</br>
+exemplo: apt update no terminal sem root, ele vai dar erro e pedir para executar como root</br>
+ao invés de colocar o comando todo com sudo na frente é só colocar sudo !! que ele complementa</br>
+history = historico, ele vai mostrar todos seus comandos e numerando eles.</br> 
+history -c = limpa todos os comandos do terminal.</br></br>
+
+Atalhos do Terminal:</br>
+CTRL + A = IR PARA O INICIO DA FRASE</br>
+CTRL + D = APAGA UM CARACTERE À DIREITA</br>
+CTRL + H = APAGA UM CARACTERE À ESQUERDA</br>
+CTRL + R = PROCURA NO HÍSTORICO DE COMANDOS </br>
+CTRL + L = LIMPAR O TERMINAL</br>
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+CRIAÇÃO DE ARQUIVOS E DIRETORIOS</br>
+
+APRENDENDO A CRIAR DIRETORIOS</br>
+mkdir = cria um diretorio </br>
+exemplo: mkdir nome-do-diretorio</br></br>
+
+APRENDENDO A REMOVER DIRETORIOS</br>
+rmdir = remove diretorios vazios</br>
+rm = remover (não vai ter como recuperar o arquivo, pois não vai ser enviado para lixeira).</br>
+rm -i = remover interativo, ele vai perguntar se realmente vai excluir.</br>
+rm -v = remover verbose vai dar mais detalhes sobre o arquivo.</br>
+rm -vi = seria o verbose e o interativo juntos.</br>
+rm -r = consigo remover o diretório.</br></br>
+
+CRIANDO ARQUIVOS DE TEXTO</br>
+Posso usar o comando touch nome-do-arquivo.EXTENSÃO</br>
+ou posso usar nano nome-do-arquivo.EXTENSÃO (usando o nano, já vai permitir escrever, já no touch ele só cria o arquivo)</br></br>
+
+VERIFICAÇÃO DE DIRETORIOS E ARQUIVOS</br>
+
+Comando du (vê o espaço que um diretorio ocupa)</br>
+exemplo du -h diretorio = mostra o gb ou mb que o diretorio ocupa</br></br>
+
+Comando diff = ele compara dois arquivos </br>
+exemplo diff arquivo1.txt arquivo2.txt</br></br>
+
+LINK SIMBÓLICO:::</br>
+Criando link simbólico linux para pastas:</br>
+ln -s /diretorio/e/pasta nome-do-link</br>
+Removendo link Simbólico linux para pastas:</br>
+rm nome-do-link (mesmo exemplo que seria remover um .txt)</br></br>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+ACESSANDO ROOT OU SUPERUSUARIO NO TERMINAL</br>
+root = super usuario /usuario administrativo do sistema.</br>
+sudo - = acessa root</br>
+sudo su = subistituir usuario</br>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+ENTENDENDO AS PERMISSÕES DO LINUX</br>
+primeiras letras mostram o tipo de arquivo.</br> 
+Se for d é diretorio.</br>
+Se for - é um arquivo normal.</br>
+Se for l é um link simbolico.</br>
+Se for c é um arquivo especial</br>
+Se for b é um arquivo de bloco</br>
+Se for s é um arquivo socket</br></br>
+
+R = read ou seja leitura, vale 4</br>
+W = write ou seja escrita, vale 2</br>
+x = execução, vale 1</br>
+sem permissão, vale 0</br>
+As permissões são divididas em três gurpos:</br>
+Dono/proprietario - Grupo e Outros.</br>
+exemplo: -rwxr-xr-x (aqui o arquivo é normal, a permissão do dono é de escrita, leitura e execução)</br></br>
+
+CHMOD DANDO PERMISSÕES</br>
+chmod = change mod ou ajustar a permissão</br>
+o numero 7 dá permissão de tudo, porque é a soma de 4+2+1 ou seja r+w+x = 7.</br>
+exemplo: chmod 777 arquivo, ele dá permissão para o dono, grupo e outros.</br>
+outro exemplo: chmod 700 arquivo, ele dá permissão de tudo (r,w e x) para o dono. outros e grupo ficam sem nenhuma permissão</br>
+outro exemplo: chmod 444 arquivo, aqui ele dá permissão só de escrita para todo mundo.</br>
+outro exemplo: chmod -r 400 diretorio/outroarquivo, aqui ele dá permissão só de escrita somente para o dono, o resto fica sem. E faz os outros arquivos dentro do diretorio tenham permissão de leitura do dono</br>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+ACESSO REMOTO SSH</br>
+
+CONFIGURANDO SSH</br>
+O QUE É O SSH = SSH é a sigla para Secure Socket Shell é um protocolo de segurança de troca de arquivo entre cliente e servidor<br>
+primeiro devemos instalar:</br>
+apt-get install openssh-server</br>
+apt-get install openssh-client</br></br>
+
+PARA CONECTAR VOCÊ DIGITA</br>
+$ ssh usuario@ipdamaquina</br>
+#PARA TRANSFERIR O ARQUIVO (JÁ TEM QUE ESTÁ NO USUARIOORIGEM)</br>
+#DICA: COMPRIMIR O ARQUIVO SE FOR GRANDE AJUDA NA TRANSFERENCIA</br> 
+SCP = (Secure Copy) é um protocolo de rede para transferências de arquivos.</br> 
+scp nome-do-arquivo USUARIODESTINO@IP_DOCOMPUTADORDESTINO:/home/usuario/LUGARQUEQUERTRANSFERIR (DEVEMOS MANTER O DOIS PONTOS DEPOIS DO IP)</br></br>
+
+Copiando um arquivo remoto para máquina local:</br>
+scp usuarioMaquinaRemota@ipDaMaquinaRemota:/home/diretorioRemoto/arquivo.txt /home/diretoriolocal/</br>
+Enviando um arquivo local para um servidor remoto:</br>
+scp /home/diretorioLocal/arquivo.txt user@ipDaMaquinaRemota:/home/diretorioRemoto/arquivo.txt</br>
+Exemplo: scp -r /home/marcelo/Downloads/nethunter.tar.gz celoezra@192.168.1.14:/home/celoezra/Downloads/nome-do-arquivo.sua-extensão<br>
+OBS: TEM QUE SER EXECUTADO NO COMPUTADOR LOCAL E SEM ENTRAR NO REMOTO, SENDO MARCELO = LOCAL E CELOEZRA = REMOTO<<br>
+Copiando pastas e subpastas do servidor remoto para máquina local:</br>
+scp -r usuarioMaquinaRemota@ipDaMaquinaRemota:/home/diretorioRemoto/pasta/ /home/diretorioLocal/</br>
+Enviando pastas e subpastas da máquina local para o servidor remoto:</br>
+scp -r /home/diretorioLocal/pasta/usuarioMaquinaRemota@ipDaMaquinaRemota:/pasta/</br>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+Gerenciadores de Pacotes</br>
+O gerenciador da distribuição normalmente é oficial.</br>
+APT é um gerenciador de pacotes de alto nível </br>
+DPKG é um gerenciador de pacotes de baixo nível</br></br>
+
+TIPOS DE GERENCIADORES.</br>
+###BAIXO NÍVEL:</br>
+RESOLVE A PARTE BUROCRATICA DO PACOTE</br>
+INSTALAR O PACOTE, ATUALIZAR, REMOVER E CRIAR O PACOTE</br>
+TRABALHA COM A PARTE DE BAIXO NÍVEL</br>
+###ALTO NÍVEL:</br>
+E A PARTE INTELIGENTE DO GERENCIADOR</br>
+RESOLVER DEPENDENCIAS</br>
+PROCURAR NO REPOSITORIO</br>
+ATUALIZAR A LISTA DE REPO</br></br>
+
+APT:</br>
+apt update = atualiza o repositorio</br>
+apt upgrade = instala as atualizações</br>
+apt install nome-do-programa = instala um pacote especificado</br>
+apt list --upgradable = mostra a lista do que vai atualizar</br>
+apt --help = para ver os comandos </br>
+apt remove nome-do-programa = remove um pacote especificado</br>
+apt purge nome-do-programa = exclui qualquer resquício que tiver do programa</br>
+apt search nome-do-pacote = procura um pacote especificado</br>
+apt info nome-do-pacote = mostra o tamanho do pacote e dependencias</br>
+apt autoremove = exclui pacotes que não são mais utilizados</br>
+apt full-upgrade = executa a atualização, mas irá remover pacotes se for necessário para atualizar o sistema todo.</br></br>
+
+DNF E YUM</br>
+São para Distros baseadas em FEDORA</br>
+mas os comandos quase sempre vão ser iguais aos do apt</br>
+exemplo: dnf update</br></br>
+
+SNAP</br>
+snap install nome-do-programa = instala um pacote especificado</br>
+-tem alguns paramentros como edge, beta, candidate e stable alguns pacotes, não todos</br>
+snap remove nome-do-programa = instala um pacote especificado</br>
+snap refresh</br>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+COMANDOS PARA ARQUIVOS</br>
+Cd</br>
+cd.. = volta um nível acima</br>
+cd - = último diretório aberto</br>
+cd ~ = volta ao diretório home</br></br>
+
+Ls</br>
+ls -l = listar todos os arquivos de forma longa</br>
+ls -lh = listar todos os arquivos de uma forma completa, incluindo o quanto ocupa</br>
+ls -dl = mostra as permissões do diretório</br>
+ls --color = para deixar os diretórios roxo e os arquivos verde.</br></br>
+
+Cp</br>
+cp = copiar</br>
+cp -r = (copiar todo o diretório)</br>
+cp -b : gera cópia de segurança se o arquivo de destino já existir.</br>
+cp -f : substitui arquivos existentes sem pedir confirmação.</br>
+cp -i : pede permissão antes de substituir arquivos existentes.</br>
+cp -l : cria um link para o arquivo de origem ao invés de copiar o arquivo.</br>
+cp -v : lista os arquivos copiados.</br>
+cp −−help : lista as opções disponíveis com o comando.</br></br>
+
+Mover</br>
+mv arquivo1.txt arquivo2.txt /home/celoezra/Alfa = ele vai mover os arquivos para onde for especificado</br>
+mv -i arquivo.txt /home/celoezra/Alfa = vai mover de forma interativa, vai perguntar se quer sobreescrever dados se tiver um arquivo com esse nome<br>
+mv -r arquivo1.txt arquivo2.txt = vai mover de forma recursiva, alterar tudo sem perguntar<br>
+mv -n arquivo1.txt arquivo2.txt = faz a mesma coisa que o -i<br>
+mv -u arquivo1.txt arquivo2.txt = só sobreescreve se o lugar que você for jogar tiver data de alteração menor que a do arquivo que eu mandar<br><br>
+
+COMO EXTRAIR ARQUIVOS ATRAVÉS DO TERMINAL</br>
+unzip nomedoarquivo.zip = serve para zip</br>
+unrar x nomedoarquivo.rar = serve para rar</br>
+tar -xvf nomedoarquivo.tar = serve para tar</br>
+tar -vzxf nomedoarquivo.tar.gz = serve para tar.gz</br>
+bunzip nomedoarquivo.bz2 = serve para bz2</br>
+tar -jxvf nomedoarquivo.tar.bz2 = serve para tar.bz2</br>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+PESQUISAR:</br>
+Grep</br>
+grep 'palavra chave em aspas simples' no lugar que você quer procurar.</br>
+grep -i 'palavra maiúscula ou minúscula' lugar que você quer procurar.</br>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+EDITORES:</br>
+
+Nano:</br>
+CTRL + X = sai do editor</br>
+CTRL + O = salva o documento</br>
+CTRL + W = procura a palavra</br> 
+CTRL + K = recorta</br>
+CTRL + U = cola</br>
+CTRL + / = colocar linha que você quer encontrar</br>
+CTRL + J = justificar</br></br>
+
+Sed Editor</br>
+sed -e = vai imprimir na tela do usuario, não modifica nada.</br>
+exemplo: sed -e 's/PADRAO/SUBISTITUIR PELO O QUE/' (nome-do-arquivo)</br>
+sed -i = vai trocar, mas não vai imprimir na tela</br>
+sed -e '/PADRAO/d' = ele vai deletar o que você quiser, mas como está -e ele só vai imprimir e não salva, para salvar é -i.</br>
+sed -e '/^$/d' = para excluir as pulas de linha</br>
+sed -e 's/nome\|name\|hombre/#######/' = ele vai trocar nome,name e hombre por ########</br></br>
+
+Cut</br>
+cut -c 1,2,3 exemplo.txt (1,2,3 são colunas do texto que você está utilizando)</br>
+cut -c 1-3 exemplo.txt (1 a 3 são colunas do texto que voce está utilizando)</br>
+d = delimitador</br>
+f = campo</br>
+exemplo: cut -d ',' -f '1,3' arquivo = (campo 1 e 3)</br>
+exemplo para salvar: cut -d ',' -f '3' arquivoorigem.txt > arquivodestino.txt</br>
+exemplo delimitador como espaço = cut -d ' ' -f '1,2' arquivoorigem.txt</br>
+exemplo de troca de delimitador = cut -d ' ' -f '1,2' --output-delimiter=',' arquivoorigem.txt (troca o delimitador por vírgula)</br></br>
+
+Vim:</br>
+dd = delete (no modo leitura)</br>
+i = inserção = para inserir texto</br>
+ESC = sai do modo inserção</br>
+: = modo comando</br>
+w = salva o que foi alterado</br>
+q! = força ao editor sair sem salvar.</br>
+q = quit</br>
+syntax on = deixa com cores os textos</br>
+set number = coloca numeros nas linhas</br>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</br>
+
+
+</body>
+</html>
